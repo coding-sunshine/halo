@@ -43,6 +43,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "try-again",
@@ -150,7 +156,9 @@ var render = function() {
         _vm._v(" "),
         _vm._m(1),
         _vm._v(" "),
-        _c("div", { staticClass: "upload_avtar" }, [
+        _vm._m(2),
+        _vm._v(" "),
+        _c("div", { staticClass: "upload_avtar margin0" }, [
           _c("div", { staticClass: "avtar_img" }, [
             _c("img", { attrs: { src: _vm.avatar } })
           ])
@@ -182,10 +190,37 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("p", [
-      _vm._v("Try Again! "),
+      _vm._v("\n            Catch the halo, send us the picture "),
       _c("br"),
-      _vm._v("\n            Better luck next time!\n        ")
+      _vm._v("\n            at xyz and win the Lucky draw!\n        ")
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "float-left width-full",
+        staticStyle: { position: "relative" }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "alert alert-warning try-again",
+            staticStyle: { position: "relative" },
+            attrs: { role: "alert" }
+          },
+          [
+            _vm._v(
+              "\n                Try Again! Better luck next time!\n            "
+            )
+          ]
+        )
+      ]
+    )
   }
 ]
 render._withStripped = true

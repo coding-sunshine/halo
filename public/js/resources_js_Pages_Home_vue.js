@@ -82,6 +82,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -108,6 +114,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     console.log(this.avatar_error);
   },
   methods: {
+    hideDialog: function hideDialog() {
+      this.dialog = false;
+    },
     onFileChange: function onFileChange(e) {
       var _this = this;
 
@@ -3850,7 +3859,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "/* The Modal (background) */\n.modal {\n    position: fixed; /* Stay in place */\n    z-index: 1; /* Sit on top */\n    left: 0;\n    top: 0;\n    width: 100%; /* Full width */\n    height: 100%; /* Full height */\n    overflow: auto; /* Enable scroll if needed */\n    background-color: rgb(0, 0, 0); /* Fallback color */\n    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */\n}\n\n/* Modal Content/Box */\n.modal-content {\n    background-color: #fefefe;\n    margin: 15% auto; /* 15% from the top and centered */\n    padding: 20px;\n    border: 1px solid #888;\n    width: 80%; /* Could be more or less, depending on screen size */\n}\n\n/* The Close Button */\n.close {\n    color: #aaa;\n    float: right;\n    font-size: 28px;\n    font-weight: bold;\n}\n\n.close:hover,\n.close:focus {\n    color: black;\n    text-decoration: none;\n    cursor: pointer;\n}\n\n.cropper-section {\n    height: 400px;\n    width: 400px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "/* The Modal (background) */\n.modal {\n    position: fixed; /* Stay in place */\n    z-index: 1; /* Sit on top */\n    left: 0;\n    top: 0;\n    width: 100%; /* Full width */\n    height: 100%; /* Full height */\n    overflow: auto; /* Enable scroll if needed */\n    background-color: rgb(0, 0, 0); /* Fallback color */\n    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */\n}\n\n/* Modal Content/Box */\n.modal-content {\n    background-color: #fefefe;\n    margin: 9% auto; /* 15% from the top and centered */\n    padding: 20px;\n    border: 1px solid #888;\n    width: 80%; /* Could be more or less, depending on screen size */\n    max-width: 400px;\n}\n\n/* The Close Button */\n.close {\n    color: #aaa;\n    float: right;\n    font-size: 28px;\n    font-weight: bold;\n}\n\n.close:hover,\n.close:focus {\n    color: black;\n    text-decoration: none;\n    cursor: pointer;\n}\n\n.cropper-section {\n    height: 400px;\n    width: 400px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -4221,14 +4230,6 @@ var render = function() {
         )
       : _vm._e(),
     _vm._v(" "),
-    _vm.avatar_error != ""
-      ? _c(
-          "div",
-          { staticClass: "alert alert-warning", attrs: { role: "alert" } },
-          [_vm._v("\n        " + _vm._s(_vm.avatar_error) + "\n    ")]
-        )
-      : _vm._e(),
-    _vm._v(" "),
     _c("img", { attrs: { src: "images/halo_bg.png" } }),
     _vm._v(" "),
     _c("div", { staticClass: "halo_intro_info" }, [
@@ -4237,8 +4238,35 @@ var render = function() {
       _vm._m(1),
       _vm._v(" "),
       _c(
+        "div",
+        {
+          staticClass: "float-left width-full",
+          staticStyle: { position: "relative" }
+        },
+        [
+          _vm.avatar_error != ""
+            ? _c(
+                "div",
+                {
+                  staticClass: "alert alert-warning home-wrning",
+                  attrs: { role: "alert" }
+                },
+                [
+                  _vm._v(
+                    "\n                " +
+                      _vm._s(_vm.avatar_error) +
+                      "\n            "
+                  )
+                ]
+              )
+            : _vm._e()
+        ]
+      ),
+      _vm._v(" "),
+      _c(
         "form",
         {
+          staticClass: "width-full",
           attrs: { enctype: "multipart/form-data" },
           on: { submit: _vm.formSubmit }
         },
@@ -4315,11 +4343,22 @@ var render = function() {
               }
             }),
             _vm._v(" "),
-            _c(
-              "button",
-              { staticClass: "custom-button", on: { click: _vm.saveImage } },
-              [_vm._v("Crop")]
-            )
+            _c("div", { staticClass: "crop-button-wrapper" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "crop-cancle-button",
+                  on: { click: _vm.hideDialog }
+                },
+                [_vm._v("Cancel")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                { staticClass: "crop-button", on: { click: _vm.saveImage } },
+                [_vm._v("Crop")]
+              )
+            ])
           ],
           1
         )

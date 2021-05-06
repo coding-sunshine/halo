@@ -3,9 +3,7 @@
         <div v-if="error != ''" class="alert alert-danger" role="alert">
             {{ error }}
         </div>
-        <div v-if="avatar_error != ''" class="alert alert-warning" role="alert">
-            {{ avatar_error }}
-        </div>
+
         <img src="images/halo_bg.png" />
         <div class="halo_intro_info">
             <h1>
@@ -16,8 +14,12 @@
                 Catch the halo, send us the picture <br />
                 at xyz and win the Lucky draw!
             </p>
-
-            <form @submit="formSubmit" enctype="multipart/form-data">
+            <div class="float-left width-full" style="position: relative">
+                <div v-if="avatar_error != ''" class="alert alert-warning home-wrning" role="alert">
+                    {{ avatar_error }}
+                </div>
+            </div>
+            <form class="width-full" @submit="formSubmit" enctype="multipart/form-data">
                 <div class="upload_avtar" @click="$refs.file_select.click()">
                     <div class="avtar_img">
                         <img :src="preview_avatar" v-if="preview_avatar" />
@@ -51,7 +53,11 @@
                     :initialAspectRatio="1/1"
                 >
                 </vue-cropper>
-                <button class="custom-button" @click="saveImage">Crop</button>
+                <div class="crop-button-wrapper">
+                <button class="crop-cancle-button" @click="hideDialog">Cancel</button>
+                <button class="crop-button" @click="saveImage">Crop</button>
+                </div>
+
             </div>
         </div>
     </div>
@@ -85,6 +91,9 @@ export default {
         console.log(this.avatar_error);
     },
     methods: {
+        hideDialog(){
+            this.dialog = false;
+        },
         onFileChange(e) {
             this.file = e.target.files[0];
             if(this.file) {
@@ -105,6 +114,7 @@ export default {
                 alert("Sorry, FileReader API not supported");
             }
         },
+
         saveImage() {
             this.cropedImage = this.$refs.cropper.getCroppedCanvas().toDataURL()
             this.$refs.cropper.getCroppedCanvas().toBlob((blob) => {

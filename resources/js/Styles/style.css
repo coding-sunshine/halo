@@ -94,7 +94,7 @@ body {
 
 .avtar_img { width: 275px; height: 290px; border: 5px solid #fff; }
 
-.avtar_img img { width: 100%; height: 100%; object-fit: cover; object-position: center center; }
+.avtar_img img { width: 100%; height: 100%; object-fit: cover; object-position: center center; filter: grayscale(1);}
 .custom-button {
 	background: #fff;
 	border:2px solid #fff;
@@ -142,7 +142,35 @@ body {
   right: 0;
 }
 
-.ring_section { float: left; width: 100%; text-align: center; margin: 60px 0 30px 0; position: relative; }
+.crop-button{
+    background: #000;
+    border: 2px solid #fff;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: 'Heebo-Regular';
+    margin: 20px auto auto auto;
+    display: table;
+    padding: 10px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+}
+.crop-cancle-button{
+    background: #dddddd;
+    border: 2px solid #fff;
+    color: #000000;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: 'Heebo-Regular';
+    margin: 20px auto auto auto;
+    display: table;
+    padding: 10px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+}
+.ring_section { float: left; width: 100%; text-align: center; margin: 60px 0 30px 0; position: relative;overflow: hidden }
 .ring_section img { width: 179px; }
 
 .margin0 {
@@ -163,12 +191,12 @@ body {
 
 @-webkit-keyframes run {
     0% {
-      left: 0;
-      transform: translateX(0);
+      left: -100px;
+      transform: translateX(-100px);
     }
     100% {
-      left: 100%;
-      transform: translateX(-100%);
+      left: 140%;
+      transform: translateX(-140%);
     }
 }
 
@@ -274,11 +302,14 @@ body {
 
 
 
-
+.crop-button-wrapper{
+    margin: auto;
+    text-align: center;
+}
 
 @media (max-width: 667px) {
 
-    .custom-button { font-size: 14px; }
+    .custom-button,.crop-cancle-button,.crop-button { font-size: 14px; }
 
     .icon svg, .icon svg path {
     fill: #fff;
@@ -332,7 +363,7 @@ body { overflow: hidden; }
     width: 170px;
     height: 185px;
     display: inline-block;
-    margin: 70px auto auto auto;
+    margin: 125px auto auto auto;
 }
 .avtar_img {
     width: 155px;
@@ -364,4 +395,97 @@ body { overflow: hidden; }
 
 .d-none{
     display: none;
+}
+.alert-warning{
+    float: left;
+    width: 100%;
+    position: absolute;
+    top: 40px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 20px;
+}
+.alert-warning.home-wrning{
+    top:62px;
+}
+.alert-success{
+    float: left;
+    width: 100%;
+    position: absolute;
+    color: #fff;
+    font-weight: bold;
+    font-size: 20px;
+}
+.width-full{
+    width:100%;
+}
+.float-left{
+    float: left;
+}
+.try-again{
+    margin-bottom: 95px;
+    margin-top: 30px;
+}
+.halo_intro .icon1 img { width: 95px; }
+.halo_intro .icon4 img {width: 76px;}
+.halo_intro .icon5 img {width: 56px;}
+.halo_intro .icon2 img {width: 85px;}
+.halo_intro .icon3 img {width: 60px;}
+.halo_intro .icon6 img {width: 66px;}
+@media (max-width: 667px){
+    .alert-warning{
+        top: 20px;
+        font-size: 16px;
+    }
+    .alert-warning.home-wrning{
+        top: 48px;
+    }
+    .modal-content {
+        max-width: 300px;
+    }
+    .alert-success{
+        font-size: 16px;
+    }
+    .halo_intro .icon1 img { width: 60px; }
+    .halo_intro .icon4 img {width: 55px;}
+    .halo_intro .icon5 img {width: 40px;}
+    .halo_intro .icon2 img {width: 55px;}
+    .halo_intro .icon3 img {width: 50px;}
+    .halo_intro .icon6 img {width: 50px;}
+    .icon4 {
+        right: -40px;
+        top: -65px;
+        left: inherit;
+    }
+    .icon5 {
+        left: inherit;
+        top: 30px;
+        right: -60px;
+    }
+    .custom-button.custom-button-share {
+        margin-top: 100px;
+    }
+    .try-again{
+        top: 0;
+        font-size: 16px;
+        line-height: 55px;
+        height: 85px;
+        margin: 40px 0;
+        margin-bottom: 0;
+    }
+    .cropper-section {
+        height: 300px !important;
+        width: 300px !important;
+    }
+    @-webkit-keyframes run {
+        0% {
+            left: -100px;
+            transform: translateX(-100px);
+        }
+        100% {
+            left: 160%;
+            transform: translateX(-160%);
+        }
+    }
+
 }
