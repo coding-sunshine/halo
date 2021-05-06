@@ -1,9 +1,5 @@
 <template>
     <div class="halo_intro">
-        <div v-if="error != ''" class="alert alert-danger" role="alert">
-            {{ error }}
-        </div>
-
         <img src="images/halo_bg.png" />
         <div class="halo_intro_info">
             <h1>
@@ -17,6 +13,11 @@
             <div class="float-left width-full" style="position: relative">
                 <div v-if="avatar_error != ''" class="alert alert-warning home-wrning" role="alert">
                     {{ avatar_error }}
+                </div>
+            </div>
+            <div class="float-left width-full" style="position: relative">
+                <div v-if="error != ''" class="alert alert-warning home-wrning" role="alert">
+                    {{ error }}
                 </div>
             </div>
             <form class="width-full" @submit="formSubmit" enctype="multipart/form-data">
@@ -93,6 +94,9 @@ export default {
     methods: {
         hideDialog(){
             this.dialog = false;
+            this.file = null;
+            this.preview_avatar = null;
+            this.selectedFile = null;
         },
         onFileChange(e) {
             this.file = e.target.files[0];
@@ -100,6 +104,8 @@ export default {
                 this.error = "";
                 this.$store.dispatch('setAvatarError', "");
                 this.preview_avatar = URL.createObjectURL(this.file);
+            } else {
+                return;
             }
 
             if (typeof FileReader === "function") {
@@ -125,7 +131,7 @@ export default {
         formSubmit(e) {
             e.preventDefault();
             let currentObj = this;
-            if (this.file === "") {
+            if (this.file === "" || !this.file) {
                 alert("Please select file!");
                 return;
             }
