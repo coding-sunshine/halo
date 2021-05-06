@@ -17,7 +17,21 @@ class HaloGameController extends Controller
         );
 
         return response()->json([
-            'success'=>'You have successfully upload file.',
+            'success'=>'You have successfully uploaded file.',
+            'file_path'=> 'storage/'.$path
+        ]);
+    }
+
+    public function fileShare(Request $request)
+    {
+        $fileName = time().'_shared.jpg';
+
+        $path = Storage::disk('public')->putFileAs(
+            'shared', $request->get('file'), $fileName
+        );
+
+        return response()->json([
+            'success'=>'You have successfully shared file.',
             'file_path'=> 'storage/'.$path
         ]);
     }

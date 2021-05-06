@@ -36,20 +36,46 @@
                 </button>
             </form>
         </div>
+        <div id="myModal" class="modal" v-show="dialog">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <vue-cropper
+                    class="cropper-section"
+                    v-show="selectedFile"
+                    ref="cropper"
+                    :src="selectedFile"
+                    alt="Source Image"
+                    :cropBoxResizable="false"
+                    :aspectRatio="1/1"
+                    :initialAspectRatio="1/1"
+                >
+                </vue-cropper>
+                <button class="custom-button" @click="saveImage">Crop</button>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
+import VueCropper from "vue-cropperjs";
+import "cropperjs/dist/cropper.css";
+import "./../Styles/modal.css";
 
 export default {
     name: "home",
+    components: { VueCropper },
     data() {
         return {
+            dialog: false,
             file: "",
             success: "",
             error: "",
             preview_avatar: "",
+            selectedFile: "",
+            cropedImage: "",
+            mime_type: "",
         };
     },
     computed: {
@@ -66,35 +92,54 @@ export default {
                 this.$store.dispatch('setAvatarError', "");
                 this.preview_avatar = URL.createObjectURL(this.file);
             }
+
+            if (typeof FileReader === "function") {
+                this.dialog = true;
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    this.selectedFile = event.target.result;
+                    this.$refs.cropper.replace(this.selectedFile);
+                };
+                reader.readAsDataURL(this.file);
+            } else {
+                alert("Sorry, FileReader API not supported");
+            }
+        },
+        saveImage() {
+            this.cropedImage = this.$refs.cropper.getCroppedCanvas().toDataURL()
+            this.$refs.cropper.getCroppedCanvas().toBlob((blob) => {
+                this.preview_avatar = this.cropedImage
+                this.dialog = false;
+            }, this.mime_type)
         },
         formSubmit(e) {
             e.preventDefault();
             let currentObj = this;
-            if(this.file === "") {
+            if (this.file === "") {
                 alert("Please select file!");
-                return
+                return;
             }
             const config = {
                 headers: { "content-type": "multipart/form-data" },
             };
 
-            let formData = new FormData();
-            formData.append("file", this.file);
-
-            axios
-                .post("/api/fileUpload", formData, config)
-                .then(function (response) {
-                    currentObj.success = response.data.success;
-                    currentObj.$store.dispatch(
-                        "setAvatarPath",
-                        response.data.file_path
-                    );
-                    currentObj.$router.push("play");
-                })
-                .catch(function (error) {
-                    console.log("Something Went wrong!");
-                    currentObj.error = error;
-                });
+            this.$refs.cropper.getCroppedCanvas().toBlob((blob) => {
+                const formData = new FormData()
+                formData.append('file', blob, 'name.jpeg')
+                axios.post("/api/fileUpload", formData, config)
+                    .then((response) => {
+                        currentObj.success = response.data.success;
+                        currentObj.$store.dispatch(
+                            "setAvatarPath",
+                            response.data.file_path
+                        );
+                        currentObj.$router.push("play");
+                    })
+                    .catch(function (error) {
+                        console.log("Something Went wrong!");
+                        currentObj.error = error;
+                    })
+            }, this.mime_type)
         },
     },
 };

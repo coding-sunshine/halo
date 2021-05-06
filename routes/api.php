@@ -19,3 +19,4 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::post('fileUpload','Api\HaloGameController@fileUpload');
+Route::post('fileShare','Api\HaloGameController@fileShare');

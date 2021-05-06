@@ -23,6 +23,8 @@
         "vuex": "^3.6.2"
     },
     "dependencies": {
-        "aos": "^2.3.4"
+        "aos": "^2.3.4",
+        "vue-cropperjs": "^4.2.0",
+        "vue-html2canvas": "0.0.4"
     }
 }

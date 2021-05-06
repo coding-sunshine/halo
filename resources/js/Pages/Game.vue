@@ -49,8 +49,8 @@ export default {
                 .x;
 
             if (
-                movingRing >= staticRing - 20 &&
-                movingRing <= staticRing + 20
+                movingRing >= staticRing - 25 &&
+                movingRing <= staticRing + 25
             ) {
                 console.log("congratulation");
                 this.$router.push("congratulation");
