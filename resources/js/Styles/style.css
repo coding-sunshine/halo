@@ -90,7 +90,7 @@ body {
 .halo_intro_info p { float: left; width: 100%; color: #000; font-size: 22px; line-height: 28px; background: #fff; padding: 15px 0; margin: 0; }
 
 
-.upload_avtar { width: 285px; height: 300px; display: inline-block; margin: 150px auto auto auto; position: relative; }
+.upload_avtar { width: 285px; height: 300px; display: inline-block; margin: 154px auto auto auto; position: relative; }
 
 .avtar_img { width: 275px; height: 290px; border: 5px solid #fff; }
 
@@ -203,6 +203,10 @@ body {
 .ring_section.congratulations_ring_section {
     margin: 0;
 }
+.ring_section.congratulations_ring_section{
+    margin-top: 14px;
+}
+
 
 .ring_section.congratulations_ring_section img {
     width: 306px;
@@ -247,7 +251,7 @@ body {
 }
 
 .icon4 {
-    right: -40px;
+    right: -72px;
     top: -80px;
     left: inherit;
 }
@@ -268,7 +272,9 @@ body {
     margin-top: 0;
 }
 
-
+.upload_avtar.margintop30.cong {
+    margin-top: -33px;
+}
 
 
 
@@ -306,7 +312,9 @@ body {
     margin: auto;
     text-align: center;
 }
-
+h1.cong-text{
+    margin-top: 73px;
+}
 @media (max-width: 667px) {
 
     .custom-button,.crop-cancle-button,.crop-button { font-size: 14px; }
@@ -367,7 +375,7 @@ body { overflow: hidden; }
 }
 .avtar_img {
     width: 155px;
-    height: 170px;
+    height: 155px;
     border: 5px solid #fff;
 }
 .halo_intro img {
@@ -423,7 +431,7 @@ body { overflow: hidden; }
     float: left;
 }
 .try-again{
-    margin-bottom: 95px;
+    margin-bottom: 94px;
     margin-top: 30px;
 }
 .halo_intro .icon1 img { width: 95px; }
@@ -476,6 +484,7 @@ body { overflow: hidden; }
     .cropper-section {
         height: 300px !important;
         width: 300px !important;
+        margin: auto;
     }
     @-webkit-keyframes run {
         0% {
@@ -486,6 +495,21 @@ body { overflow: hidden; }
             left: 160%;
             transform: translateX(-160%);
         }
+    }
+    .ring_section.congratulations_ring_section {
+        margin-top: 2px;
+    }
+    .halo_intro .congratulations_ring_section.ring_section img{
+        width: 254px;
+    }
+    .upload_avtar.margintop30.cong {
+        margin-top: -19px;
+    }
+    .icon4{
+        right: -55px;
+    }
+    .cong-text{
+        margin-top: 65px;
     }
 
 }

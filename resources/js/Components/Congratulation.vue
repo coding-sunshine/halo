@@ -1,5 +1,5 @@
 <template>
-    <div class="upload_avtar margintop30">
+    <div class="upload_avtar margintop30 cong">
         <div class="avtar_img">
             <img :src="avatar" />
         </div>

@@ -477,7 +477,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "upload_avtar margintop30" }, [
+  return _c("div", { staticClass: "upload_avtar margintop30 cong" }, [
     _c("div", { staticClass: "avtar_img" }, [
       _c("img", { attrs: { src: _vm.avatar } })
     ]),
@@ -655,6 +655,16 @@ var render = function() {
               ])
             : _vm._e(),
           _vm._v(" "),
+          _vm.gameWon
+            ? _c("h1", { staticClass: "cong-text" }, [
+                _vm._v("\n                Congratulations! "),
+                _c("br"),
+                _vm._v(
+                  "\n                You are our pround value champion!\n            "
+                )
+              ])
+            : _vm._e(),
+          _vm._v(" "),
           !_vm.gameWon
             ? _c("p", [
                 _vm._v(
@@ -690,16 +700,6 @@ var render = function() {
                   )
                 ]
               )
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.gameWon
-            ? _c("h1", [
-                _vm._v("\n                Congratulations! "),
-                _c("br"),
-                _vm._v(
-                  "\n                You are our pround value champion!\n            "
-                )
-              ])
             : _vm._e()
         ]),
         _vm._v(" "),

@@ -42,7 +42,6 @@
         <div id="myModal" class="modal" v-show="dialog">
             <!-- Modal content -->
             <div class="modal-content">
-                <span class="close">&times;</span>
                 <vue-cropper
                     class="cropper-section"
                     v-show="selectedFile"

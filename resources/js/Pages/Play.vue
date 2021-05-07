@@ -7,6 +7,10 @@
                     Get the Halo. <br />
                     Be the Value Champion.
                 </h1>
+                <h1 v-if="gameWon" class="cong-text">
+                    Congratulations! <br />
+                    You are our pround value champion!
+                </h1>
                 <p v-if="!gameWon">
                     Catch the halo, send us the picture <br />
                     at xyz and win the Lucky draw!
@@ -17,10 +21,6 @@
                         Try Again! Better luck next time!
                     </div>
                 </div>
-                <h1 v-if="gameWon">
-                    Congratulations! <br />
-                    You are our pround value champion!
-                </h1>
 
             </span>
 
