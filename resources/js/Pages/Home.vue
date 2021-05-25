@@ -87,9 +87,6 @@ export default {
     computed: {
         ...mapGetters(["avatar_error"]),
     },
-    mounted() {
-        console.log(this.avatar_error);
-    },
     methods: {
         hideDialog(){
             this.dialog = false;
@@ -151,7 +148,7 @@ export default {
                         currentObj.$router.push("play");
                     })
                     .catch(function (error) {
-                        console.log("Something Went wrong!");
+                        alert("Something Went wrong!");
                         currentObj.error = error;
                     })
             }, this.mime_type)

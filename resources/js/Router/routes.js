@@ -10,6 +10,12 @@ const routes = [
         name: 'play',
         meta: { requiresAvatar: true }
     },
+    {
+        path: '/detail_form',
+        component: () => import('../Pages/DetailForm.vue'),
+        name: 'detail_form',
+        meta: { requiresAvatar: true }
+    },
 ]
 
 export default routes;

@@ -249,11 +249,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 formData.append('file', _this.output);
                 currentObj = _this;
                 axios.post("/api/fileShare", formData, config).then(function (response) {
-                  currentObj.success = response.data.success;
-                  console.log(currentObj.success);
+                  console.log(response.data.success);
+                  currentObj.$store.dispatch("setSharedPhotoPath", response.data.file_path);
+                  currentObj.$router.push("detail_form");
                 })["catch"](function (error) {
-                  console.log("Something Went wrong!");
-                  currentObj.error = error;
+                  console.log(error);
+                  alert("Something Went wrong!");
                 });
 
               case 10:
@@ -498,6 +499,7 @@ var render = function() {
       "a",
       {
         staticClass: "custom-button custom-button-share",
+        attrs: { "data-html2canvas-ignore": "" },
         on: {
           click: function($event) {
             return _vm.$emit("share")

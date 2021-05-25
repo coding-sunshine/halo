@@ -20,3 +20,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('fileUpload','Api\HaloGameController@fileUpload');
 Route::post('fileShare','Api\HaloGameController@fileShare');
+Route::get('companyList','Api\HaloGameController@companyList');
+Route::post('detailSubmit','Api\HaloGameController@detailSubmit');

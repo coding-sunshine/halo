@@ -44,7 +44,7 @@
             <br />
             <p data-aos="fade-up" data-aos-delay="1000">Value creation</p>
         </div>
-        <a class="custom-button custom-button-share" @click="$emit('share')"
+        <a class="custom-button custom-button-share" @click="$emit('share')" data-html2canvas-ignore
             ><span>Share</span></a
         >
     </div>

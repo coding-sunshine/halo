@@ -113,12 +113,16 @@ export default {
             let currentObj = this;
             axios.post("/api/fileShare", formData, config)
                 .then((response) => {
-                    currentObj.success = response.data.success;
-                    console.log(currentObj.success)
+                    console.log(response.data.success)
+                    currentObj.$store.dispatch(
+                        "setSharedPhotoPath",
+                        response.data.file_path
+                    );
+                    currentObj.$router.push("detail_form");
                 })
                 .catch(function (error) {
-                    console.log("Something Went wrong!");
-                    currentObj.error = error;
+                    console.log(error);
+                    alert("Something Went wrong!");
                 })
         },
     },
