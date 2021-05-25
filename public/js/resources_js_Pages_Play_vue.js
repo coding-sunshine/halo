@@ -506,7 +506,7 @@ var render = function() {
           }
         }
       },
-      [_c("span", [_vm._v("Share")])]
+      [_c("span", [_vm._v("Submit Your Picture")])]
     )
   ])
 }

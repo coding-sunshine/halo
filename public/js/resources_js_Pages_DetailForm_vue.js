@@ -61,6 +61,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "detail_form",
@@ -261,136 +273,165 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "p",
-      {
-        directives: [
-          {
-            name: "show",
-            rawName: "v-show",
-            value: _vm.loader,
-            expression: "loader"
-          }
-        ]
-      },
-      [_vm._v("Loading...")]
-    ),
+  return _c("div", { staticClass: "halo_intro" }, [
+    _c("img", { attrs: { src: "images/halo_bg.png" } }),
     _vm._v(" "),
-    _vm.errors.length
-      ? _c("p", [
-          _c("b", [_vm._v("Please correct the following error(s):")]),
-          _vm._v(" "),
-          _c(
-            "ul",
-            _vm._l(_vm.errors, function(error, i) {
-              return _c("li", { key: i }, [_vm._v(_vm._s(error))])
-            }),
-            0
-          )
-        ])
-      : _vm._e(),
-    _vm._v(" "),
-    _c("label", { attrs: { for: "name" } }, [_vm._v("Name")]),
-    _vm._v(" "),
-    _c("input", {
-      directives: [
+    _c("div", { staticClass: "halo_intro_info" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _vm._m(1),
+      _vm._v(" "),
+      _c(
+        "p",
         {
-          name: "model",
-          rawName: "v-model",
-          value: _vm.name,
-          expression: "name"
-        }
-      ],
-      attrs: { type: "text", name: "name", id: "name" },
-      domProps: { value: _vm.name },
-      on: {
-        input: function($event) {
-          if ($event.target.composing) {
-            return
-          }
-          _vm.name = $event.target.value
-        }
-      }
-    }),
-    _vm._v(" "),
-    _c("label", { attrs: { for: "email" } }, [_vm._v("Email")]),
-    _vm._v(" "),
-    _c("input", {
-      directives: [
-        {
-          name: "model",
-          rawName: "v-model",
-          value: _vm.email,
-          expression: "email"
-        }
-      ],
-      attrs: { type: "email", name: "email", id: "email" },
-      domProps: { value: _vm.email },
-      on: {
-        input: function($event) {
-          if ($event.target.composing) {
-            return
-          }
-          _vm.email = $event.target.value
-        }
-      }
-    }),
-    _vm._v(" "),
-    _c("label", { attrs: { for: "company" } }, [_vm._v("Company Name")]),
-    _vm._v(" "),
-    _c(
-      "select",
-      {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.loader,
+              expression: "loader"
+            }
+          ]
+        },
+        [_vm._v("Loading...")]
+      ),
+      _vm._v(" "),
+      _vm.errors.length
+        ? _c("p", [
+            _c("b", [_vm._v("Please correct the following error(s):")]),
+            _vm._v(" "),
+            _c(
+              "ul",
+              _vm._l(_vm.errors, function(error, i) {
+                return _c("li", { key: i }, [_vm._v(_vm._s(error))])
+              }),
+              0
+            )
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _c("label", { attrs: { for: "name" } }, [_vm._v("Name")]),
+      _vm._v(" "),
+      _c("input", {
         directives: [
           {
             name: "model",
             rawName: "v-model",
-            value: _vm.company,
-            expression: "company"
+            value: _vm.name,
+            expression: "name"
           }
         ],
-        attrs: { name: "company", id: "company" },
+        attrs: { type: "text", name: "name", id: "name" },
+        domProps: { value: _vm.name },
         on: {
-          change: function($event) {
-            var $$selectedVal = Array.prototype.filter
-              .call($event.target.options, function(o) {
-                return o.selected
-              })
-              .map(function(o) {
-                var val = "_value" in o ? o._value : o.value
-                return val
-              })
-            _vm.company = $event.target.multiple
-              ? $$selectedVal
-              : $$selectedVal[0]
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.name = $event.target.value
           }
         }
-      },
-      _vm._l(_vm.companyList, function(company, key) {
-        return _c("option", { key: key, domProps: { value: key } }, [
-          _vm._v(_vm._s(company))
-        ])
       }),
-      0
-    ),
-    _vm._v(" "),
-    _c(
-      "button",
-      {
-        staticClass: "custom-button",
-        attrs: { disabled: _vm.loader },
+      _vm._v(" "),
+      _c("label", { attrs: { for: "email" } }, [_vm._v("Email")]),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.email,
+            expression: "email"
+          }
+        ],
+        attrs: { type: "email", name: "email", id: "email" },
+        domProps: { value: _vm.email },
         on: {
-          click: function($event) {
-            return _vm.submit()
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.email = $event.target.value
           }
         }
-      },
-      [_c("span", [_vm._v("Submit")])]
-    )
+      }),
+      _vm._v(" "),
+      _c("label", { attrs: { for: "company" } }, [_vm._v("Company Name")]),
+      _vm._v(" "),
+      _c(
+        "select",
+        {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.company,
+              expression: "company"
+            }
+          ],
+          attrs: { name: "company", id: "company" },
+          on: {
+            change: function($event) {
+              var $$selectedVal = Array.prototype.filter
+                .call($event.target.options, function(o) {
+                  return o.selected
+                })
+                .map(function(o) {
+                  var val = "_value" in o ? o._value : o.value
+                  return val
+                })
+              _vm.company = $event.target.multiple
+                ? $$selectedVal
+                : $$selectedVal[0]
+            }
+          }
+        },
+        _vm._l(_vm.companyList, function(company, key) {
+          return _c("option", { key: key, domProps: { value: key } }, [
+            _vm._v(_vm._s(company))
+          ])
+        }),
+        0
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "custom-button",
+          attrs: { disabled: _vm.loader },
+          on: {
+            click: function($event) {
+              return _vm.submit()
+            }
+          }
+        },
+        [_c("span", [_vm._v("Submit")])]
+      )
+    ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h1", [
+      _vm._v("\n            Get the Halo. "),
+      _c("br"),
+      _vm._v("\n            Be the Value Champion.\n        ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [
+      _vm._v("\n            Catch the halo, send us the picture "),
+      _c("br"),
+      _vm._v("\n            at xyz and win the Lucky draw!\n        ")
+    ])
+  }
+]
 render._withStripped = true
 
 

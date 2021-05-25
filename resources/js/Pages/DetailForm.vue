@@ -1,24 +1,36 @@
 <template>
-    <div>
-        <p v-show="loader">Loading...</p>
-        <p v-if="errors.length">
-            <b>Please correct the following error(s):</b>
-            <ul>
-                <li v-for="(error, i) in errors" :key="i">{{ error }}</li>
-            </ul>
-        </p>
-        <label for="name">Name</label>
-        <input type="text" name="name" id="name" v-model="name">
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email" v-model="email">
-        <label for="company">Company Name</label>
-        <select name="company" id="company" v-model="company">
-            <option :value="key" v-for="(company, key) in companyList" :key="key">{{ company }}</option>
-        </select>
+    <div class="halo_intro">
+        <img src="images/halo_bg.png" />
+        <div class="halo_intro_info">
+            <h1>
+                Get the Halo. <br />
+                Be the Value Champion.
+            </h1>
+            <p>
+                Catch the halo, send us the picture <br />
+                at xyz and win the Lucky draw!
+            </p>
 
-        <button class="custom-button" @click="submit()" :disabled="loader">
-            <span>Submit</span>
-        </button>
+            <p v-show="loader">Loading...</p>
+            <p v-if="errors.length">
+                <b>Please correct the following error(s):</b>
+                <ul>
+                    <li v-for="(error, i) in errors" :key="i">{{ error }}</li>
+                </ul>
+            </p>
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" v-model="name">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" v-model="email">
+            <label for="company">Company Name</label>
+            <select name="company" id="company" v-model="company">
+                <option :value="key" v-for="(company, key) in companyList" :key="key">{{ company }}</option>
+            </select>
+
+            <button class="custom-button" @click="submit()" :disabled="loader">
+                <span>Submit</span>
+            </button>
+        </div>
     </div>
 </template>
 
