@@ -11,21 +11,9 @@ const routes = [
         meta: { requiresAvatar: true }
     },
     {
-        path: '/game',
-        component: () => import('../Pages/Game.vue'),
-        name: 'game',
-        meta: { requiresAvatar: true }
-    },
-    {
-        path: '/congratulation',
-        component: () => import('../Pages/Congratulation.vue'),
-        name: 'congratulation',
-        meta: { requiresAvatar: true }
-    },
-    {
-        path: '/try-again',
-        component: () => import('../Pages/TryAgain.vue'),
-        name: 'try-again',
+        path: '/detail_form',
+        component: () => import('../Pages/DetailForm.vue'),
+        name: 'detail_form',
         meta: { requiresAvatar: true }
     },
 ]

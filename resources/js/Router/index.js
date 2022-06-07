@@ -12,7 +12,7 @@ router.beforeEach((to, from, next) => {
         if(store.state.avatar !== "") {
             next()
         } else {
-            store.dispatch('setAvatarError', 'Please select avatar first!');
+            store.dispatch('setAvatarError', 'Please upload your picture first!');
             next("/")
         }
     } else {

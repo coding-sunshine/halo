@@ -1,11 +1,5 @@
 <template>
     <div class="halo_intro">
-        <div v-if="error != ''" class="alert alert-danger" role="alert">
-            {{ error }}
-        </div>
-        <div v-if="avatar_error != ''" class="alert alert-warning" role="alert">
-            {{ avatar_error }}
-        </div>
         <img src="images/halo_bg.png" />
         <div class="halo_intro_info">
             <h1>
@@ -16,8 +10,17 @@
                 Catch the halo, send us the picture <br />
                 at xyz and win the Lucky draw!
             </p>
-
-            <form @submit="formSubmit" enctype="multipart/form-data">
+            <div class="float-left width-full" style="position: relative">
+                <div v-if="avatar_error != ''" class="alert alert-warning home-wrning" role="alert">
+                    {{ avatar_error }}
+                </div>
+            </div>
+            <div class="float-left width-full" style="position: relative">
+                <div v-if="error != ''" class="alert alert-warning home-wrning" role="alert">
+                    {{ error }}
+                </div>
+            </div>
+            <form class="width-full" @submit="formSubmit" enctype="multipart/form-data">
                 <div class="upload_avtar" @click="$refs.file_select.click()">
                     <div class="avtar_img">
                         <img :src="preview_avatar" v-if="preview_avatar" />
@@ -39,7 +42,6 @@
         <div id="myModal" class="modal" v-show="dialog">
             <!-- Modal content -->
             <div class="modal-content">
-                <span class="close">&times;</span>
                 <vue-cropper
                     class="cropper-section"
                     v-show="selectedFile"
@@ -51,7 +53,11 @@
                     :initialAspectRatio="1/1"
                 >
                 </vue-cropper>
-                <button class="custom-button" @click="saveImage">Crop</button>
+                <div class="crop-button-wrapper">
+                <button class="crop-cancle-button" @click="hideDialog">Cancel</button>
+                <button class="crop-button" @click="saveImage">Crop</button>
+                </div>
+
             </div>
         </div>
     </div>
@@ -81,16 +87,21 @@ export default {
     computed: {
         ...mapGetters(["avatar_error"]),
     },
-    mounted() {
-        console.log(this.avatar_error);
-    },
     methods: {
+        hideDialog(){
+            this.dialog = false;
+            this.file = null;
+            this.preview_avatar = null;
+            this.selectedFile = null;
+        },
         onFileChange(e) {
             this.file = e.target.files[0];
             if(this.file) {
                 this.error = "";
                 this.$store.dispatch('setAvatarError', "");
                 this.preview_avatar = URL.createObjectURL(this.file);
+            } else {
+                return;
             }
 
             if (typeof FileReader === "function") {
@@ -105,6 +116,7 @@ export default {
                 alert("Sorry, FileReader API not supported");
             }
         },
+
         saveImage() {
             this.cropedImage = this.$refs.cropper.getCroppedCanvas().toDataURL()
             this.$refs.cropper.getCroppedCanvas().toBlob((blob) => {
@@ -115,7 +127,7 @@ export default {
         formSubmit(e) {
             e.preventDefault();
             let currentObj = this;
-            if (this.file === "") {
+            if (this.file === "" || !this.file) {
                 alert("Please select file!");
                 return;
             }
@@ -136,7 +148,7 @@ export default {
                         currentObj.$router.push("play");
                     })
                     .catch(function (error) {
-                        console.log("Something Went wrong!");
+                        alert("Something Went wrong!");
                         currentObj.error = error;
                     })
             }, this.mime_type)
